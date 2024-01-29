@@ -1,0 +1,11 @@
+Selection sort is a simple sorting algorithm that sorts an array by repeatedly selecting the minimum element from the unsorted portion of the array and swapping it with the first element of the unsorted portion. This process is repeated until the entire array is sorted.
+
+The correctness of selection sort can be argued as follows:
+
+At the beginning of the algorithm, the first element of the array is the smallest element in the unsorted portion of the array.
+The algorithm then selects the minimum element from the remaining unsorted portion of the array and swaps it with the second element of the array.
+This process is repeated until the entire unsorted portion of the array has been sorted.
+At each step, the algorithm maintains the invariant that the sorted portion of the array contains the smallest k elements, where k is the number of iterations performed so far.
+Since the algorithm always selects the minimum element from the unsorted portion of the array, it is guaranteed to find the smallest element in the unsorted portion and move it to the sorted portion.
+Therefore, after k iterations, the sorted portion of the array contains the smallest k elements, and the unsorted portion contains the remaining elements.
+Since the algorithm continues until the entire array is sorted, it is guaranteed to produce a sorted array.
