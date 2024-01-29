@@ -1,11 +1,19 @@
-Selection sort is a simple sorting algorithm that sorts an array by repeatedly selecting the minimum element from the unsorted portion of the array and swapping it with the first element of the unsorted portion. This process is repeated until the entire array is sorted.
+Selection sort works by repeatedly finding the minimum element in the unsorted portion of the array and swapping it with the first element of the unsorted portion. This process is repeated until the entire array is sorted.
 
-The correctness of selection sort can be argued as follows:
+To argue the correctness of selection sort, we can use the following invariants:
 
-At the beginning of the algorithm, the first element of the array is the smallest element in the unsorted portion of the array.
-The algorithm then selects the minimum element from the remaining unsorted portion of the array and swaps it with the second element of the array.
-This process is repeated until the entire unsorted portion of the array has been sorted.
-At each step, the algorithm maintains the invariant that the sorted portion of the array contains the smallest k elements, where k is the number of iterations performed so far.
-Since the algorithm always selects the minimum element from the unsorted portion of the array, it is guaranteed to find the smallest element in the unsorted portion and move it to the sorted portion.
-Therefore, after k iterations, the sorted portion of the array contains the smallest k elements, and the unsorted portion contains the remaining elements.
-Since the algorithm continues until the entire array is sorted, it is guaranteed to produce a sorted array.
+At the beginning of each iteration of the outer loop, the subarray arr[:i] is sorted.
+At the end of each iteration of the outer loop, the minimum element in the subarray arr[i:] is in the first position of the subarray.
+We can prove these invariants by induction.
+
+Base case: For i=0, the subarray arr[:i] is empty, and the minimum element in the subarray arr[i:] is the first element of the array. Both invariants hold.
+
+Inductive step: Assume that the invariants hold for some i. We need to show that they hold for i+1.
+
+To show that the first invariant holds for i+1, we need to show that the subarray arr[:i+1] is sorted. Since the subarray arr[:i] is sorted by induction hypothesis, we only need to show that arr[i] is less than or equal to all elements in the subarray arr[i:]. This is true because the minimum element in the subarray arr[i:] is swapped with arr[i] at the end of the current iteration.
+
+To show that the second invariant holds for i+1, we need to show that the minimum element in the subarray arr[i+1:] is in the first position of the subarray. This is true because the minimum element in the subarray arr[i:] is found and swapped with arr[i] at the end of the current iteration. Since the minimum element in the subarray arr[i:] is also the minimum element in the subarray arr[i+1:], the second invariant holds.
+
+Therefore, by induction, both invariants hold for all i. In particular, when i=n, the entire array is sorted, and the algorithm terminates.
+
+In summary, selection sort is a correct sorting algorithm because it maintains the invariants that the subarray arr[:i] is sorted and the minimum element in the subarray arr[i:] is in the first position of the subarray. These invariants ensure that the algorithm terminates with a sorted array.
